@@ -1,15 +1,15 @@
-package com.example.liyan.leetcodeproj;
+package com.example.liyan.leetcodeproj.adapter;
 
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.liyan.leetcodeproj.R;
+import com.example.liyan.leetcodeproj.model.Problem;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.List;
@@ -22,16 +22,16 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
     private List<Problem> mProblemList;
     static class ViewHolder extends RecyclerView.ViewHolder{
         FoldingCell fc;
-        TextView titleView;
-        View problemDifficulty;
+        TextView problemTitle;
+        TextView problemTopics;
         View problemItem;
-        TextView problemRate;
+//        ImageView iconImp;
         public ViewHolder(View view){
             super(view);
-            titleView= view.findViewById(R.id.title);
-            problemDifficulty= view.findViewById(R.id.problem_difficulty);
+            problemTitle= view.findViewById(R.id.problem_title);
             problemItem=view.findViewById(R.id.problem_item);
-            problemRate= view.findViewById(R.id.problem_acceptRate);
+            problemTopics=view.findViewById(R.id.problem_topic);
+//            iconImp= view.findViewById(R.id.icon_star);
             fc= view.findViewById(R.id.folding_cell);
         }
     }
@@ -42,14 +42,6 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.problem_item, parent, false);
         final ViewHolder holder=new ViewHolder(view);
-//        holder.problemItem.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                int position= holder.getAdapterPosition();
-//                Problem problem=mProblemList.get(position);
-//                Toast.makeText(v.getContext(), "you clicked view"+problem.getTitle(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
         holder.fc.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -63,21 +55,13 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         Problem problem= mProblemList.get(position);
-        //holder.descriptionView.setText(problem.getDescription());
-        holder.titleView.setText(problem.getTitle());
-        String difficulty=problem.getDifficulty();
-        if(difficulty.equals("Hard")){
-            holder.problemDifficulty.setBackgroundColor(Color.parseColor("#D9534F"));
-        }else if(difficulty.equals("Medium")){
-            holder.problemDifficulty.setBackgroundColor(Color.parseColor("#F0AD4E"));
-        }else{
-            holder.problemDifficulty.setBackgroundColor(Color.parseColor("#5CB85C"));
-        }
-        holder.problemRate.setText("Accept Rate:"+problem.getAcceptRate()+"");
+        holder.problemTopics.setText("Array");
+        holder.problemTitle.setText(problem.getTitle());
     }
 
     @Override
     public int getItemCount(){
         return mProblemList.size();
     }
+
 }

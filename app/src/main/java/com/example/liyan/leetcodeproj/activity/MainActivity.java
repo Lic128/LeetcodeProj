@@ -1,4 +1,4 @@
-package com.example.liyan.leetcodeproj;
+package com.example.liyan.leetcodeproj.activity;
 
 import android.app.SearchManager;
 import android.support.annotation.NonNull;
@@ -16,8 +16,13 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.liyan.leetcodeproj.adapter.ProblemAdapter;
+import com.example.liyan.leetcodeproj.R;
+import com.example.liyan.leetcodeproj.model.Problem;
+import com.example.liyan.leetcodeproj.util.DividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     private List<Problem> problemList= new ArrayList<>();
@@ -30,14 +35,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getAllProblems();
         toolbar=findViewById((R.id.toolbar));
         setSupportActionBar(toolbar);
-        initProblems();
+
+        /**
+         * Set the  RecyclerView
+         * **/
         problemRecyclerView=findViewById(R.id.problem_recycler_view);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);
         problemRecyclerView.setLayoutManager(layoutManager);
+        problemRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         adapter= new ProblemAdapter(problemList);
         problemRecyclerView.setAdapter(adapter);
+
+        /**
+         * Set the Drawer**/
         mDrawerLayout= findViewById(R.id.drawer_layout);
         NavigationView navView=findViewById(R.id.nav_view);
         ActionBar actionBar= getSupportActionBar();
@@ -54,20 +67,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void initProblems(){
-        for(int i=0; i<300; i++){
-            Problem problem_1= new Problem("Two Sum", "Given an array of integers, return indices of the two numbers such that they add up to a specific target.\n" +
-                    "\n" +
-                    "You may assume that each input would have exactly one solution, and you may not use the same element twice.", "Medium", 0.5);
-            problemList.add(problem_1);
-            Problem problem_2=new Problem("Add Two numbers", "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.\n" +
-                    "\n" +
-                    "You may assume the two numbers do not contain any leading zero, except the number 0 itself.", "Easy", 0.3);
-            problemList.add(problem_2);
-            Problem problem_3=new Problem("Word Break", "", "Hard", 0.2);
-            problemList.add(problem_3);
-        }
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.toolbar, menu);
@@ -83,9 +82,18 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             default:
         }
         return true;
+    }
+
+    public void getAllProblems(){
+        for(int i=0; i<10; i++){
+            Problem problem= new Problem();
+            problem.setTitle("Two Sum");
+            problemList.add(problem);
+        }
     }
 }

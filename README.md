@@ -28,3 +28,25 @@ An Android application for leetcode
   ​
 
   ​
+
+
+## 交互设计
+
+MainActivity使用Drawer：
+
+Drawer中内容：
+
+- Part 1:   Navigation View
+
+  这一部分相当于导航栏， 我们在里面放置：
+
+  - All  即主界面，Part2 显示所有题目(不一次性显示题目选做)
+  - Stared 即标记过的题目， Part2 显示所有标记过的题目
+  - Topic 按照Topic显示题目，Part2 显示Topic列表
+  - Random  随即Pick题目， Part2 显示题目卡片
+  - Company 按照公司的tag显示题目， Part2显示公司Tag
+  - Feedback
+  - About
+  - Share(选做)
+
+  ​

@@ -1,4 +1,6 @@
-package com.example.liyan.leetcodeproj;
+package com.example.liyan.leetcodeproj.model;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.List;
 
@@ -6,7 +8,7 @@ import java.util.List;
  * Created by liyan on 2/5/18.
  */
 
-public class Problem {
+public class Problem extends DataSupport{
     private int id;
     private String title;
     private String url;

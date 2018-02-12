@@ -4,24 +4,31 @@
 <group
     android:checkableBehavior="single">
     <item android:id="@+id/nav_call"
-        android:icon="@drawable/nav_call"
-        android:title="Call"/>
-    <item android:id="@+id/nav_friends"
-        android:icon="@drawable/nav_friends"
-        android:title="Friends"
+        android:icon="@drawable/ic_explore_white_18dp"
+        android:title="All"/>
+    <item android:id="@+id/nav_starred"
+        android:icon="@drawable/ic_star_black_24dp"
+        android:title="Starred"
         />
+    <item android:id="@+id/nav_random"
+        android:title="Random"
+        />
+
     <item android:id="@+id/nav_location"
         android:icon="@drawable/nav_location"
-        android:title="Friends"
+        android:title="Topic"
         />
     <item android:id="@+id/nav_mail"
         android:icon="@drawable/nav_mail"
-        android:title="Friends"
+        android:title="Company"
         />
-    <item android:id="@+id/nav_task"
+    <item android:id="@+id/nav_feedback"
         android:icon="@drawable/nav_task"
-        android:title="Tasks"
+        android:title="Feedback"
         />
-
+    <item
+        android:title="Sync"
+        android:icon="@drawable/nav_call"
+        android:id="@+id/nav_sync"/>
 </group>
 </menu>

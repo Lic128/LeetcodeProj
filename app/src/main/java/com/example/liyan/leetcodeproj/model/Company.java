@@ -1,4 +1,4 @@
-package com.example.liyan.leetcodeproj;
+package com.example.liyan.leetcodeproj.model;
 
 import org.litepal.crud.DataSupport;
 
@@ -8,16 +8,16 @@ import java.util.List;
  * Created by liyan on 2/11/18.
  */
 
-public class Topic extends DataSupport {
-    private String topic;
+public class Company extends DataSupport {
+    private String company;
     private List<Integer> ids;
 
-    public String getTopic() {
-        return topic;
+    public String getCompany() {
+        return company;
     }
 
-    public void setTopic(String topic) {
-        this.topic = topic;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public List<Integer> getIds() {

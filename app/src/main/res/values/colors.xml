@@ -6,4 +6,6 @@
     <color name="colorEasy">#5CB85C</color>
     <color name="colorMedium">#F0AD4E</color>
     <color name="colorHard">#D9534F</color>
+    <color name="icon_tint_normal">#7a7a7a</color>
+    <color name="icon_tint_selected">#fed776</color>
 </resources>
