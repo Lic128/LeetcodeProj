@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.liyan.leetcodeproj.R;
 import com.example.liyan.leetcodeproj.model.Problem;
@@ -22,15 +23,15 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
     private List<Problem> mProblemList;
     static class ViewHolder extends RecyclerView.ViewHolder{
         FoldingCell fc;
-        TextView problemTitle;
-        TextView problemTopics;
+        View cellTitle;
+        View cellContent;
         View problemItem;
 //        ImageView iconImp;
         public ViewHolder(View view){
             super(view);
-            problemTitle= view.findViewById(R.id.problem_title);
+            cellContent= view.findViewById(R.id.cell_content);
+            cellTitle= view.findViewById(R.id.cell_title);
             problemItem=view.findViewById(R.id.problem_item);
-            problemTopics=view.findViewById(R.id.problem_topic);
 //            iconImp= view.findViewById(R.id.icon_star);
             fc= view.findViewById(R.id.folding_cell);
         }
@@ -43,11 +44,9 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.problem_item, parent, false);
         final ViewHolder holder=new ViewHolder(view);
         holder.fc.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        holder.fc.toggle(false);
-                    }
+                (v)->{
+                    holder.fc.toggle(false);
+                    Toast.makeText(v.getContext(), "You Clicked view", Toast.LENGTH_SHORT).show();
                 }
         );
         return holder;
@@ -55,8 +54,14 @@ public class ProblemAdapter extends RecyclerView.Adapter<ProblemAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         Problem problem= mProblemList.get(position);
-        holder.problemTopics.setText("Array");
-        holder.problemTitle.setText(problem.getTitle());
+        TextView problemTitle1=holder.cellTitle.findViewById(R.id.problem_title);
+        TextView problemTopic1=holder.cellTitle.findViewById(R.id.problem_topic);
+        TextView problemTitle2=holder.cellContent.findViewById(R.id.problem_title);
+        TextView problemTopic2=holder.cellContent.findViewById(R.id.problem_topic);
+        problemTitle1.setText(problem.getTitle());
+        problemTitle2.setText(problem.getTitle());
+        problemTopic1.setText("Array");
+        problemTopic2.setText("Array");
     }
 
     @Override

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cell_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
     android:paddingBottom="@dimen/padding_list_row"
@@ -14,7 +14,6 @@
         android:id="@+id/title_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:orientation="vertical"
         android:paddingLeft="72dp"
         android:paddingRight="@dimen/padding_list_row">
@@ -51,4 +50,11 @@
             <!--android:layout_alignParentRight="true"-->
             <!--android:tint="@color/icon_tint_normal" />-->
     </LinearLayout>
+    <ImageView
+        android:id="@+id/icon_star"
+        android:layout_width="@dimen/icon_star"
+        android:layout_height="@dimen/icon_star"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:tint="@color/icon_tint_normal" />
 </RelativeLayout>
